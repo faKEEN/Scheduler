@@ -1,0 +1,12 @@
+Comment compiler:
+
+Pour sharing (LIFO):
+
+1)make -f makefile_sharing
+2)./quicksort_sharing -t nombredethread -n tailledutableau
+
+
+Pour le work stealing:
+
+1)make -f makefile_stealing:
+2)./quicksort_stealing -t nombredethread -n tailledutableau

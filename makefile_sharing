@@ -1,0 +1,18 @@
+all: quicksort
+
+quicksort: quicksort.o sched.o queueTask.o
+	gcc -o quicksort_sharing quicksort.o sched.o queueTask.o -Wall -lrt -pthread
+
+quicksort.o: quicksort.c sched.h
+	gcc -o quicksort.o -c quicksort.c -W -Wall
+
+sched.o: sched_sharing.c sched.h
+	gcc -o sched.o -c sched_sharing.c -W -Wall
+
+queueTask.o: queueTask.c queueTask.h
+	gcc -o queueTask.o -c queueTask.c -Wall
+clean:
+	rm -rf *.o
+
+mrproper: clean
+	rm -rf quicksort_sharing

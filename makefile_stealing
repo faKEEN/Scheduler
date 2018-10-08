@@ -1,0 +1,19 @@
+all: quicksort
+
+quicksort: quicksort.o sched.o deque.o
+	gcc -o quicksort_stealing quicksort.o sched.o deque.o -W -Wall -lrt -pthread
+
+quicksort.o: quicksort.c sched.h
+	gcc -o quicksort.o -c quicksort.c -W -Wall
+
+sched.o: sched_stealing.c sched.h
+	gcc -o sched.o -c sched_stealing.c -W -Wall
+
+deque.o: deque.c deque.h
+	gcc -o deque.o -c deque.c -W -Wall
+
+clean:
+	rm -rf *.o
+
+mrproper: clean
+	rm -rf quicksort_stealing
